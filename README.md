@@ -27,7 +27,55 @@
 
 
 
-분해된 파일에서 사용하고자 하는 변수명: 실제 변수명
+*views/board/index.html.erb*
+
+```html
+<div>
+    <% @posts.each do |post| %>
+    <a href="/board/<%=post.id %>"><%= post.title %></a><br>
+    <% end %>
+</div>
+<hr>
+<%= link_to "새글쓰기", "/board/new" %>
+<%= render 'ranking', title: @title %>
+<%= render 'article' %>
+```
+
+- <%= render 'ranking', title: @title %>
+
+  : `title: @title` = 분해된 파일에서 사용하고자 하는 변수명: 실제 변수명
+
+
+
+*views/board/_ranking.html.erb*
+
+```html
+<p>_ranking</p>
+<%= title %>
+<p>1. 사람</p>
+<p>2. 육이오</p>
+<p>3. 월드컵</p>
+<p>4. fnq</p>
+<p>5. 루비</p>
+<p>6. 루비 레일즈</p>
+<p>7. 아침</p>
+<p>8. 날씨</p>
+<p>9. 미세먼지</p>
+<p>10. 비오나요</p>
+```
+
+
+
+*views/board/_article.html.erb*
+
+```html
+<p>_article</p>
+<h1>캠퍼스 </h1>
+<br>
+<p>오늘 끝나느 시간에 .. </p>
+```
+
+
 
 
 
@@ -180,7 +228,7 @@ theme_index GET    /theme(.:format)          theme#index
 
 4. views 생성
 
-   *views/index.html.erb*
+   *views/boards/index.html.erb*
 
    ```html
    <h2>목차</h2>
@@ -209,7 +257,7 @@ theme_index GET    /theme(.:format)          theme#index
 
    
 
-   *views/show.html.erb*
+   *views/boards/show.html.erb*
 
    ```html
    <h2>상세보기</h2>
@@ -222,7 +270,7 @@ theme_index GET    /theme(.:format)          theme#index
 
    
 
-   *views/edit.html.erb*
+   *views/boards/edit.html.erb*
 
    ```html
    <%= form_tag("/boards/#{@board.id}", method: "patch") do %>
@@ -235,7 +283,7 @@ theme_index GET    /theme(.:format)          theme#index
 
    
 
-   *views/new.html.erb*
+   *views/boards/new.html.erb*
 
    ```html
    <%= form_tag("/boards") do %>
