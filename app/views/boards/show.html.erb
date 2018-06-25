@@ -1,0 +1,6 @@
+<h2>상세보기</h2>
+<%= @board.title %>
+<%= @board.contents %>
+<%= link_to "목록", "/boards" %>
+<%= link_to "수정", "/boards/#{@board.id}/edit" %>
+<%= link_to "삭제", "/boards/#{@board.id}", method: "delete" %>
